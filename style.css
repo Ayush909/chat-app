@@ -1,0 +1,42 @@
+body {
+    padding: 0;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+  }
+
+  #message-container {
+    width: 50%;
+    max-width: 1200px;      
+  }
+
+  #message-container div {
+    background-color: #746DBD;
+    color: #fff;
+    padding: 5px;
+    border-radius: 10px;
+  }
+
+  #message-container div:nth-child(2n) {
+    background-color: #FFF;
+    color: #000;
+  }
+
+  #send-container {
+    position: fixed;
+    padding-bottom: 30px;
+    bottom: 0;
+    background-color: white;
+    max-width: 1200px;
+    width: 50%;
+    display: flex;
+  }
+
+  #message-input {
+    flex-grow: 1;
+  }
+  #send-button{
+      background-color: green;
+      color: #fff;
+      font-size: 20px;
+  }

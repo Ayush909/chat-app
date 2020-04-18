@@ -1,65 +1,22 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
     <title>ChatApp</title>
-    <style>
-    body {
-      padding: 0;
-      margin: 0;
-      display: flex;
-      justify-content: center;
-    }
-
-    #message-container {
-      width: 50%;
-      max-width: 1200px;      
-    }
-
-    #message-container div {
-      background-color: #746DBD;
-      color: #fff;
-      padding: 5px;
-      border-radius: 10px;
-    }
-
-    #message-container div:nth-child(2n) {
-      background-color: #FFF;
-      color: #000;
-    }
-
-    #send-container {
-      position: fixed;
-      padding-bottom: 30px;
-      bottom: 0;
-      background-color: white;
-      max-width: 1200px;
-      width: 50%;
-      display: flex;
-    }
-
-    #message-input {
-      flex-grow: 1;
-    }
-    #send-button{
-        background-color: green;
-        color: #fff;
-        font-size: 20px;
-    }
-    </style>
     <script defer src="http://localhost:3000/socket.io/socket.io.js"></script>
     <script defer src="script.js"></script>
-</head>
-<body>
+  </head>
+  <body>
     <div id="message-container"></div>
     <div id="account-details">
       <div id="user-name"></div>
       <div id="user-count"></div>
     </div>
     <form id="send-container">
-        <input type="text" id="message-input">
-        <button type="submit" id="send-button">Send</button>
+      <input type="text" id="message-input" />
+      <button type="submit" id="send-button">Send</button>
     </form>
-</body>
+  </body>
 </html>
