@@ -1,4 +1,22 @@
-const io = require('socket.io')(3000);
+const PORT = process.env.PORT || 3000;
+const express = require('express');
+const app = express();
+const server = require('http').Server(app);
+const io = require('socket.io')(server);
+
+
+server.listen(PORT);
+
+// app.set('views','./views');
+// app.set('view engine','ejs');
+// app.use(express.static('public'));
+// app.use(express.urlencoded({extended:true}));
+
+// const rooms = {};
+// app.get('/', (req,res)=>{
+//     res.render('index' , {rooms: rooms});
+// })
+
 const users = {};
 let no_of_users = 0;
 io.on('connection', socket =>{
