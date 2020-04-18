@@ -4,14 +4,11 @@ const app = express();
 const server = require('http').Server(app);
 const io = require('socket.io')(server);
 
-
-server.listen(PORT);
-
 // app.set('views','./views');
 // app.set('view engine','ejs');
-// app.use(express.static('public'));
+app.use(express.static('client'));
 // app.use(express.urlencoded({extended:true}));
-
+server.listen(PORT);
 // const rooms = {};
 // app.get('/', (req,res)=>{
 //     res.render('index' , {rooms: rooms});
