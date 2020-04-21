@@ -3,19 +3,29 @@ const express = require('express');
 const app = express();
 const server = require('http').Server(app);
 const io = require('socket.io')(server);
+const fs = require('fs');
+const path = require('path');
+const upload = require('express-fileupload');
 
-// app.set('views','./views');
-// app.set('view engine','ejs');
+app.use(upload());
 app.use(express.static('client'));
-// app.use(express.urlencoded({extended:true}));
 server.listen(PORT);
-// const rooms = {};
-// app.get('/', (req,res)=>{
-//     res.render('index' , {rooms: rooms});
-// })
+
+app.post('/', (req,res)=>{
+    if(req.files){
+        var file = req.files.filename;
+        var name = file.name;
+        file.mv('./client//uploads/'+ name, (err)=>{
+            if(err) throw err;
+            res.send('Done!');
+        })
+    }
+})
+
 
 const users = {};
 let no_of_users = 0;
+
 io.on('connection', socket =>{
     no_of_users++;
     socket.broadcast.emit('user-count',{ no_of_users : no_of_users});
@@ -29,10 +39,13 @@ io.on('connection', socket =>{
     socket.on('send-chat-message', msg =>{
         socket.broadcast.emit('chat-message',{ msg: msg , name : users[socket.id] });
     })
+
+    
     socket.on('disconnect', ()=>{
         no_of_users--;
         socket.broadcast.emit('user-count',{ no_of_users : no_of_users});
         socket.broadcast.emit('user-disconnected', users[socket.id]);
         delete users[socket.id];
     })
+    
 })

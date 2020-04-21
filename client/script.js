@@ -17,6 +17,8 @@ socket.on('user-connected', name=>{
     appendMessage(`${name} connected`);
 })
 
+
+
 socket.on('account-details',(data)=>{
     userName.innerText = 'Your name: '+data.name;
 })

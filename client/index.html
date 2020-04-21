@@ -38,7 +38,10 @@
       width: 50%;
       display: flex;
     }
-
+    #img-stream1{
+      width: 120px;
+      height: 120px;
+    }
     #message-input {
       flex-grow: 1;
     }
@@ -52,11 +55,21 @@
     <script defer src="script.js"></script>
 </head>
 <body>
-    <div id="message-container"></div>
+    <div id="message-container">
+    </div>
+
     <div id="account-details">
       <div id="user-name"></div>
       <div id="user-count"></div>
     </div>
+    <!-- For image -->
+    <form action="/" method="POST" enctype="multipart/form-data">
+      Select an image to upload:
+      <input type="file" name="filename"> 
+      <input type="submit" value="Upload Image">
+    </form>
+
+    <!-- For msg -->
     <form id="send-container">
         <input type="text" id="message-input">
         <button type="submit" id="send-button">Send</button>
